@@ -13,6 +13,8 @@ SOURCES += \
     ../getfilefromserverprocess.cpp \
     ../installmoduleprocess.cpp \
     ../removemoduleprocess.cpp \
+    ../updategitprocess.cpp \
+    ../convertprocess.cpp \
     ../utils.cpp \
     main_console.cpp \
     consoleoutput.cpp
@@ -23,10 +25,22 @@ HEADERS += \
     ../global.h \
     ../installmoduleprocess.h \
     ../removemoduleprocess.h \
+    ../updategitprocess.h \
+    ../convertprocess.h \
     ../utils.h \
     consoleoutput.h
 
 !contains(XCONFIG, xarchive) {
     XCONFIG += xarchive
     include(../XArchive/xarchive.pri)
+}
+
+!contains(XCONFIG, xgithub) {
+    XCONFIG += xgithub
+    include(../XGithub/xgithub.pri)
+}
+
+!contains(XCONFIG, xoptions) {
+    XCONFIG += xoptions
+    include(../XOptions/xoptions.pri)
 }
